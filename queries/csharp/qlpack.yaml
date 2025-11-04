@@ -1,0 +1,4 @@
+name: lares/csharp-deadcode
+version: 0.0.1
+dependencies:
+  codeql/csharp-all: "*"
