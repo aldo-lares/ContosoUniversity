@@ -40,7 +40,7 @@ public class DeleteModel : PageModel
 
         if (saveChangesError.GetValueOrDefault())
         {
-            ErrorMessage = String.Format("Delete {ID} failed. Try again", id);
+            ErrorMessage = String.Format("Delete {0} failed. Try again", id);
         }
 
         return Page();
