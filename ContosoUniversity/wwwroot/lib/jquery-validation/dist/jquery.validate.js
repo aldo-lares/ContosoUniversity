@@ -659,7 +659,15 @@ $.extend( $.validator, {
 			} );
 		},
 
+		/**
+		 * Safely returns the first element matching the provided CSS selector. 
+		 * Rejects selector strings that could be interpreted as HTML fragments.
+		 * Only CSS selectors (e.g. "#id", ".class", "input[name='x']") are allowed.
+		 */
 		clean: function( selector ) {
+			if ( typeof selector === "string" && /^\s*<.+>/.test(selector) ) {
+				throw new Error("Unsafe selector passed to clean(): HTML fragments are not allowed.");
+			}
 			return $( selector )[ 0 ];
 		},
 
