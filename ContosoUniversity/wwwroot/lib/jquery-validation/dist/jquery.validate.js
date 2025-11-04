@@ -1043,6 +1043,14 @@ $.extend( $.validator, {
 				element = this.findByName( element.name );
 			}
 
+			// If element is a string (should not happen, but defensively guard)
+			if (typeof element === "string") {
+				// Attempt to find by name, otherwise abort
+				element = this.findByName(element)[0];
+				if (!element) {
+					return undefined;
+				}
+			}
 			// Always apply ignore filter
 			return $( element ).not( this.settings.ignore )[ 0 ];
 		},
